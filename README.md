@@ -1,119 +1,195 @@
-# `react-virtual-gantt`
+[![@coreui coreui](https://img.shields.io/badge/@coreui%20-coreui-lightgrey.svg?style=flat-square)](https://github.com/coreui/coreui)
+[![npm package][npm-coreui-badge]][npm-coreui]
+[![NPM downloads][npm-coreui-download]][npm-coreui]  
+[![@coreui react](https://img.shields.io/badge/@coreui%20-react-lightgrey.svg?style=flat-square)](https://github.com/coreui/react)
+[![npm package][npm-coreui-react-badge]][npm-coreui-react]
+[![NPM downloads][npm-coreui-react-download]][npm-coreui-react]  
 
-Gantt chart component for React.
+[npm-coreui]: https://www.npmjs.com/package/@coreui/coreui
+[npm-coreui-badge]: https://img.shields.io/npm/v/@coreui/coreui.png?style=flat-square
+[npm-coreui-download]: https://img.shields.io/npm/dm/@coreui/coreui.svg?style=flat-square
+[npm-coreui-react]: https://www.npmjs.com/package/@coreui/react
+[npm-coreui-react-badge]: https://img.shields.io/npm/v/@coreui/react.png?style=flat-square
+[npm-coreui-react-download]: https://img.shields.io/npm/dm/@coreui/react.svg?style=flat-square
+[npm]: https://www.npmjs.com/package/@coreui/react
 
-It's still under development. I'll be gratefull for your issues and suggestions.
+# CoreUI Free React Admin Template
 
-![demonstration of react-virtual-gantt](https://media.giphy.com/media/eYYcpKWzXmMuVC0FOs/giphy.gif)
+CoreUI is meant to be the UX game changer. Pure & transparent code is devoid of redundant components, so the app is light enough to offer ultimate user experience. This means mobile devices also, where the navigation is just as easy and intuitive as on a desktop or laptop. The CoreUI Layout API lets you customize your project for almost any device – be it Mobile, Web or WebApp – CoreUI covers them all!
 
-## Features
+## Table of Contents
 
-- biderectional infinity scroll by dates
-- horizontal and vertical virtualization
-- nested items
-- repeating items (everyday, specific days of week, specific days of month)
-- zoom from 1 hour to 1 day
-- change step from 5 min to 1 day
+* [Versions](#versions)
+* [CoreUI Pro](#coreui-pro)
+* [Quick Start](#quick-start)
+* [Installation](#installation)
+* [Basic usage](#basic-usage)
+* [What's included](#whats-included)
+* [Documentation](#documentation)
+* [Versioning](#versioning)
+* [Creators](#creators)
+* [Community](#community)
+* [Support CoreUI Development](#support-coreui-development)
+* [Copyright and License](#copyright-and-license)
 
-## Installation
+## Versions
+
+* [CoreUI Free Bootstrap Admin Template](https://github.com/coreui/coreui-free-bootstrap-admin-template)
+* [CoreUI Free Angular Admin Template](https://github.com/coreui/coreui-free-angular-admin-template)
+* [CoreUI Free React.js Admin Template](https://github.com/coreui/coreui-free-react-admin-template)
+* [CoreUI Free Vue.js Admin Template](https://github.com/coreui/coreui-free-vue-admin-template)
+
+## CoreUI Pro
+
+* 💪  [CoreUI Pro Angular Admin Template](https://coreui.io/product/angular-dashboard-template/)
+* 💪  [CoreUI Pro Bootstrap Admin Template](https://coreui.io/product/bootstrap-dashboard-template/)
+* 💪  [CoreUI Pro React Admin Template](https://coreui.io/product/react-dashboard-template/)
+* 💪  [CoreUI Pro Vue Admin Template](https://coreui.io/product/vue-dashboard-template/)
+
+## Quick Start
+
+- [Download the latest release](https://github.com/coreui/coreui-free-react-admin-template/archive/refs/heads/main.zip)
+- Clone the repo: `git clone https://github.com/coreui/coreui-free-react-admin-template.git`
+
+### Installation
+
+``` bash
+$ npm install
+```
+
+or
+
+``` bash
+$ yarn install
+```
+
+### Basic usage
+
+``` bash
+# dev server with hot reload at http://localhost:3000
+$ npm start 
+```
+
+or 
+
+``` bash
+# dev server with hot reload at http://localhost:3000
+$ yarn start
+```
+
+Navigate to [http://localhost:3000](http://localhost:3000). The app will automatically reload if you change any of the source files.
+
+#### Build
+
+Run `build` to build the project. The build artifacts will be stored in the `build/` directory.
 
 ```bash
-# npm
-npm install react-virtual-gantt
-
-# yarn
-yarn add react-virtual-gantt
+# build for production with minification
+$ npm run build
 ```
 
-## Usage
+or
 
-The component gets the height and width of its parent.
-
-```tsx
-import { Gantt, GanttDataType } from "react-virtual-gantt";
-
-const GanttComponent = ({data: GanttDataType[]}) => {
-  return (
-    <div>
-      <Gantt>
-        <Gantt.Controls />
-        <Gantt.Chart data={data} />
-      </Gantt>
-    </div>
-  );
-}
+```bash
+# build for production with minification
+$ yarn build
 ```
 
-## Props
+## What's included
 
-The gantt is under development and props will be greatly expanded in the future.
+Within the download you'll find the following directories and files, logically grouping common assets and providing both compiled and minified variations. You'll see something like this:
 
-### `Gantt.Chart`
-
-Component for drawing the chart itslef.
-
-#### `data: GanttDataType[]`
-
-Example:
-
-```ts
-[
-  {
-    key: "task-1",
-    title: "Some task without data",
-    children: [
-      {
-        key: "task-1-1",
-        title: "Some non repeating task",
-        data: {
-          startDate: "2023-03-09T08:00:00.000Z",
-          endDate: "2023-03-09T08:00:00.000Z",
-        },
-        children: [
-          {
-            key: "task-1-1-1",
-            title: "Some weekly repeating task",
-            data: {
-              repeatType: "WEEK",
-              fromTime: 28800,
-              endDate: 64800,
-              weekdays: [1, 3, 6],
-            },
-          },
-        ],
-      },
-      {
-        key: "task-1-2",
-        title: "Some daily repeating task",
-        data: {
-          repeatType: "DAY",
-          fromTime: 28800,
-          endDate: 64800,
-        },
-      },
-    ],
-  },
-  {
-    key: "task-2",
-    title: "Some monthly repeating task",
-    data: {
-      repeatType: "MONTH",
-      fromTime: 28800,
-      endDate: 64800,
-      monthdays: [1, 3, 5, 9, 11, 14, 21, 31],
-    },
-  },
-];
+```
+coreui-free-react-admin-template
+├── public/          # static files
+│   └── index.html   # html template
+│
+├── src/             # project root
+│   ├── assets/      # images, icons, etc.
+│   ├── components/  # common components - header, footer, sidebar, etc.
+│   ├── layouts/     # layout containers
+│   ├── scss/        # scss styles
+│   ├── views/       # application views
+│   ├── _nav.js      # sidebar navigation config
+│   ├── App.js
+│   ├── ...
+│   ├── index.js
+│   ├── routes.js    # routes config
+│   └── store.js     # template state example 
+│
+└── package.json
 ```
 
-#### `className?: string`
+## Documentation
 
-#### `onBarDoubleClick?: OnBarDoubleClickType`
+The documentation for the CoreUI Admin Template is hosted at our website [CoreUI for React](https://coreui.io/react/)
 
-#### `onBarChange?: OnBarChangeType`
+## Versioning
 
-### `Gantt.Controls`
+For transparency into our release cycle and in striving to maintain backward compatibility, CoreUI Free Admin Template is maintained under [the Semantic Versioning guidelines](http://semver.org/).
 
-Сomponent for displaying the current date and controls for the scale and bar change step.
+See [the Releases section of our project](https://github.com/coreui/coreui-free-react-admin-template/releases) for changelogs for each release version.
 
-#### `className?: string`
+## Creators
+
+**Łukasz Holeczek**
+* <https://twitter.com/lukaszholeczek>
+* <https://github.com/mrholek>
+* <https://github.com/coreui>
+
+**CoreUI team**
+* https://github.com/orgs/coreui/people
+
+## Community
+
+Get updates on CoreUI's development and chat with the project maintainers and community members.
+
+- Follow [@core_ui on Twitter](https://twitter.com/core_ui).
+- Read and subscribe to [CoreUI Blog](https://coreui.ui/blog/).
+
+## Support CoreUI Development
+
+CoreUI is an MIT-licensed open source project and is completely free to use. However, the amount of effort needed to maintain and develop new features for the project is not sustainable without proper financial backing. You can support development by buying the [CoreUI PRO](https://coreui.io/pricing/) or by becoming a sponsor via [Open Collective](https://opencollective.com/coreui/).
+
+<!--- StartOpenCollectiveBackers -->
+
+### Platinum Sponsors
+
+Support this project by [becoming a Platinum Sponsor](https://opencollective.com/coreui/contribute/platinum-sponsor-40959/). A large company logo will be added here with a link to your website.
+
+<a href="https://opencollective.com/coreui/contribute/platinum-sponsor-40959/checkout"><img src="https://opencollective.com/coreui/tiers/platinum-sponsor/0/avatar.svg?avatarHeight=100"></a>
+
+### Gold Sponsors
+
+Support this project by [becoming a Gold Sponsor](https://opencollective.com/coreui/contribute/gold-sponsor-40960/). A big company logo will be added here with a link to your website.
+
+<a href="https://opencollective.com/coreui/contribute/gold-sponsor-40960/checkout"><img src="https://opencollective.com/coreui/tiers/gold-sponsor/0/avatar.svg?avatarHeight=100"></a> 
+
+### Silver Sponsors
+
+Support this project by [becoming a Silver Sponsor](https://opencollective.com/coreui/contribute/silver-sponsor-40967/). A medium company logo will be added here with a link to your website.
+
+<a href="https://opencollective.com/coreui/contribute/silver-sponsor-40967/checkout"><img src="https://opencollective.com/coreui/tiers/gold-sponsor/0/avatar.svg?avatarHeight=100"></a>
+
+### Bronze Sponsors
+
+Support this project by [becoming a Bronze Sponsor](https://opencollective.com/coreui/contribute/bronze-sponsor-40966/). The company avatar will show up here with a link to your OpenCollective Profile.
+
+<a href="https://opencollective.com/coreui/contribute/bronze-sponsor-40966/checkout"><img src="https://opencollective.com/coreui/tiers/bronze-sponsor/0/avatar.svg?avatarHeight=100"></a> 
+
+### Backers
+
+Thanks to all the backers and sponsors! Support this project by [becoming a backer](https://opencollective.com/coreui/contribute/backer-40965/).
+
+<a href="https://opencollective.com/coreui/contribute/backer-40965/checkout" target="_blank" rel="noopener"><img src="https://opencollective.com/coreui/backers.svg?width=890"></a>
+
+<!--- EndOpenCollectiveBackers -->
+
+## Copyright and License
+
+copyright 2023 creativeLabs Łukasz Holeczek.   
+
+ 
+Code released under [the MIT license](https://github.com/coreui/coreui-free-react-admin-template/blob/master/LICENSE).
+There is only one limitation you can't can’t re-distribute the CoreUI as stock. You can’t do this if you modify the CoreUI. In past we faced some problems with persons who tried to sell CoreUI based templates.
+
